@@ -59,7 +59,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" style="color:#fff" href="/">esk8<span
+                <a class="navbar-brand" style="color:#fff" href="/esk8builds/">esk8<span
                         style="color:rgb(204, 255, 153)">builds</span></a>
             </div>
 
@@ -69,7 +69,7 @@
 
 
 
-                    <li><a href="/">New</a></li>
+                    <li><a href="/esk8builds/">New</a></li>
 
 
 
@@ -97,153 +97,7 @@
     <div class="container">
         <script src="/esk8builds/static/js/masonry.pkgd.min.js"></script>
         <script src="/esk8builds/static/js/imagesloaded.pkgd.min.js"></script>
-        <style>
-            .author {
-                z-index: 99;
-            }
 
-
-            .item td {
-                padding-right: 10px
-            }
-
-            td.item_last {
-                padding-right: 0
-            }
-
-            .grid-item {
-                width: 570px;
-                max-width: 100%
-            }
-
-            .grid-item .item {
-                max-height: 200px;
-                overflow-y: hidden;
-            }
-
-
-
-            @media only screen and (min-width: 768px) {
-                .grid-item .item {
-                    width: 500px
-                }
-
-                .author {
-                    right: -50px
-                }
-
-                .grid-item .item {
-                    border: 1px #fff solid;
-                    -webkit-filter: brightness(90%);
-                    filter: brightness(90%);
-                }
-
-                .grid-item .item:HOVER {
-                    border: 1px red solid;
-                    -webkit-filter: brightness(100%);
-                    filter: brightness(100%);
-                }
-
-                /*.grid-item .item:HOVER{max-height:inherit;position:relative;z-index:100;}*/
-                .grid-item .item:HOVER .btn_likes {
-                    z-index: 101;
-                }
-
-                .grid-item .item:HOVER .author {
-                    z-index: 101;
-                }
-            }
-
-
-
-            .show_md {
-                display: none
-            }
-
-
-
-            @media only screen and (min-width: 500px) and (max-width: 1025px) {
-                .grid-item {
-                    width: 47%;
-                }
-
-                .grid-item .item {
-                    width: 100%;
-                }
-            }
-
-
-
-
-            @media only screen and (max-width: 800px) {
-                .show_md {
-                    display: block
-                }
-
-
-                #box_filters {
-                    display: none
-                }
-
-                .filter_text {
-                    text-align: center
-                }
-
-                .nav-tabs li a {
-                    padding: 10px 12px
-                }
-
-            }
-
-
-
-            .grid-item .item {
-                max-height: inherit;
-            }
-
-
-            .author {
-                background: rgba(0, 0, 0, 0.4);
-            }
-
-            .btn_likes {
-                color: #ccff99;
-            }
-
-            .zoom {
-                display: none;
-            }
-
-            .item:HOVER .info {
-                display: none;
-            }
-
-            .item:HOVER .username {
-                display: none;
-            }
-
-            .item:HOVER .author {
-                background: none;
-                text-shadow: 1px 1px #000;
-            }
-
-            .btn_likes:HOVER {
-                text-shadow: none;
-                color: #000;
-                background: #ccff99;
-                padding: 10px;
-                margin-left: -10px;
-                margin-right: -10px;
-                border-radius: 20px;
-                text-decoration: none;
-            }
-
-            .item:HOVER .zoom {
-                display: inline;
-                text-shadow: 1px 1px #000;
-                font-size: 40px;
-            }
-        </style>
 
 
 
