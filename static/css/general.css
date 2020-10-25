@@ -1,0 +1,47 @@
+.btn-block{clear:both}
+
+.navbar{border-radius:0}
+
+/* paginator */
+.pagination{margin-top:25px}
+.pagination a, .pagination span{float:left;min-width:33px;text-align:center;padding:5px 0;background:#fff;margin-right:5px;border:1px #ccc solid;border-radius:100px;}
+.pagination span.current{background:#08C;color:#fff;border:1px #08C solid;}
+.pagination a:HOVER{border:1px #08C solid;text-decoration:none;}
+
+
+@media only screen
+and (min-width : 480px) {
+	.grid-item .author{margin-right:50px}
+
+
+
+	.heart{display:none}
+
+	.top_items a{margin:0 15px 15px 0;float:left;}
+		.top_items a:hover .heart{display:block;}
+		.top_items img{width:160px;height:160px;}
+
+
+
+}
+
+@media only screen
+and (max-width : 480px) {
+
+	.panel-heading, .panel-body{padding:10px;}
+
+	h1{text-align:center;margin-top:0;}
+
+	.btn_signup{display:block;text-align:center}
+	.signup_break{clear:both;}
+
+	.heart{display:none}
+
+	.top_items a{margin:0 15px 15px 0;display:block;text-align:center;}
+		.top_items img{width:70%;height:auto;border:1px #efefef solid;}
+
+}
+
+@media only screen and (max-width: 800px){
+	#form_search{display: none}
+}

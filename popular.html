@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Most liked boards - esk8builds</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/static/css/bootstrap/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/css/general.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/static/css/bootstrap/js/bootstrap.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+
+
+
+
+
+
+    <meta property="og:image" content="/static/img/preview.jpg" />
+    <meta name="og:title" content="Most liked boards">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="/static/img/preview.jpg" />
+    <meta name="twitter:site" content="@esk8builds">
+    <meta name="twitter:title" content="Most liked boards">
+    <meta name="twitter:description" content=".">
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+
+
+
+
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color:#fff" href="/">esk8<span
+                        style="color:rgb(204, 255, 153)">builds</span></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                <ul class="nav navbar-nav">
+
+
+
+                    <li><a href="/">New</a></li>
+
+
+
+
+                    <li><a href="popular.html">Popular</a></li>
+
+
+
+
+                    <li><a href="shops.html">Shops</a></li>
+
+
+
+
+                </ul>
+
+
+
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container">
+        <script src="/static/js/masonry.pkgd.min.js"></script>
+        <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+        <style>
+            .author {
+                z-index: 99;
+            }
+
+
+            .item td {
+                padding-right: 10px
+            }
+
+            td.item_last {
+                padding-right: 0
+            }
+
+            .grid-item {
+                width: 570px;
+                max-width: 100%
+            }
+
+            .grid-item .item {
+                max-height: 200px;
+                overflow-y: hidden;
+            }
+
+
+
+            @media only screen and (min-width: 768px) {
+                .grid-item .item {
+                    width: 500px
+                }
+
+                .author {
+                    right: -50px
+                }
+
+                .grid-item .item {
+                    border: 1px #fff solid;
+                    -webkit-filter: brightness(90%);
+                    filter: brightness(90%);
+                }
+
+                .grid-item .item:HOVER {
+                    border: 1px red solid;
+                    -webkit-filter: brightness(100%);
+                    filter: brightness(100%);
+                }
+
+                /*.grid-item .item:HOVER{max-height:inherit;position:relative;z-index:100;}*/
+                .grid-item .item:HOVER .btn_likes {
+                    z-index: 101;
+                }
+
+                .grid-item .item:HOVER .author {
+                    z-index: 101;
+                }
+            }
+
+
+
+            .show_md {
+                display: none
+            }
+
+
+
+            @media only screen and (min-width: 500px) and (max-width: 1025px) {
+                .grid-item {
+                    width: 47%;
+                }
+
+                .grid-item .item {
+                    width: 100%;
+                }
+            }
+
+
+
+
+            @media only screen and (max-width: 800px) {
+                .show_md {
+                    display: block
+                }
+
+
+                #box_filters {
+                    display: none
+                }
+
+                .filter_text {
+                    text-align: center
+                }
+
+                .nav-tabs li a {
+                    padding: 10px 12px
+                }
+
+            }
+
+
+
+            .grid-item .item {
+                max-height: inherit;
+            }
+
+
+            .author {
+                background: rgba(0, 0, 0, 0.4);
+            }
+
+            .btn_likes {
+                color: #ccff99;
+            }
+
+            .zoom {
+                display: none;
+            }
+
+            .item:HOVER .info {
+                display: none;
+            }
+
+            .item:HOVER .username {
+                display: none;
+            }
+
+            .item:HOVER .author {
+                background: none;
+                text-shadow: 1px 1px #000;
+            }
+
+            .btn_likes:HOVER {
+                text-shadow: none;
+                color: #000;
+                background: #ccff99;
+                padding: 10px;
+                margin-left: -10px;
+                margin-right: -10px;
+                border-radius: 20px;
+                text-decoration: none;
+            }
+
+            .item:HOVER .zoom {
+                display: inline;
+                text-shadow: 1px 1px #000;
+                font-size: 40px;
+            }
+        </style>
+
+
+
+
+        <link href="/static/js/lightbox/css/lightbox.css" rel="stylesheet">
+        <script src="/static/js/lightbox/js/lightbox.js"></script>
+
+
+
+
+        <script>
+
+            var zoom_timeout = 0;
+            var zoom_interval;
+
+            $(function () {
+
+
+
+
+                var grid_width = 570;
+
+
+
+
+                if ($(window).width() == 768) {
+                    grid_width = 50;
+                }
+
+                if ($(window).width() == 1024) {
+                    grid_width = 150;
+                }
+
+
+                $(window).resize(function () {
+                    $('.grid').masonry('bindResize')
+                });
+
+
+
+                imagesLoaded(document.querySelector('.grid'), function (instance) {
+                    $('.grid').masonry({
+                        // options
+                        itemSelector: '.grid-item',
+                        columnWidth: grid_width
+                    });
+                });
+
+
+
+
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+        <h1>Popular builds</h1>
+
+
+
+
+
+        <ul class="nav nav-tabs">
+
+            <li class="active"><a href="/popular.html" style="font-weight:bold">Likes</a></li>
+
+
+            <li><a href="/popular_fastest.html">Fastest</a></li>
+
+            <li><a href="/popular_lightweight.html">Lightweight</a></li>
+
+            <li><a href="/popular_range.html">More range</a></li>
+
+            <li><a href="/popular_cheapest.html">Cheapest</a></li>
+
+
+        </ul>
+        <br>
+
+
+
+
+
+
+        <div class="grid">
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="76" class="item"
+                            style="background:#666 url('/static/uploads/500/igr10f82jw0ltag.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/igr10f82jw0ltag.jpg" class="zoom" id="zoom76"
+                                data-lightbox="image-76">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>range</td>
+                                        <td>25 km</td>
+                                        <td class="item_last">16 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>55 kmh</td>
+                                        <td class="item_last">34 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>weight</td>
+                                        <td>13 kg</td>
+                                        <td class="item_last">29 lbs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>price</td>
+                                        <td>1093 €</td>
+                                        <td class="item_last">$ 1280</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=eboosted" class="username" style="color:#fff">eboosted</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 11</a>
+
+                            </div>
+
+                            <a href="/eboard-76.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="99" class="item"
+                            style="background:#666 url('/static/uploads/500/gqendkdp95hrjku.JPG?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/gqendkdp95hrjku.JPG" class="zoom" id="zoom99"
+                                data-lightbox="image-99">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=etoxx" class="username" style="color:#fff">etoxx</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 11</a>
+
+                            </div>
+
+                            <a href="/eboard-99.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="1" class="item"
+                            style="background:#666 url('/static/uploads/500/ilw49llcmi6kr48.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/ilw49llcmi6kr48.jpg" class="zoom" id="zoom1"
+                                data-lightbox="image-1">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>range</td>
+                                        <td>15 km</td>
+                                        <td class="item_last">9 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>40 kmh</td>
+                                        <td class="item_last">25 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>weight</td>
+                                        <td>14 kg</td>
+                                        <td class="item_last">31 lbs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>price</td>
+                                        <td>1000 €</td>
+                                        <td class="item_last">$ 1171</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=tueboard" class="username" style="color:#fff">tueboard</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 8</a>
+
+                            </div>
+
+                            <a href="/eboard-1.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="57" class="item"
+                            style="background:#666 url('/static/uploads/500/57.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/57.jpg" class="zoom" id="zoom57" data-lightbox="image-57">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>range</td>
+                                        <td>35 km</td>
+                                        <td class="item_last">22 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>62 kmh</td>
+                                        <td class="item_last">39 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>price</td>
+                                        <td>2000 €</td>
+                                        <td class="item_last">$ 2342</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=fliess" class="username" style="color:#fff">fliess</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 8</a>
+
+                            </div>
+
+                            <a href="/eboard-57.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="63" class="item"
+                            style="background:#666 url('/static/uploads/500/63.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/63.jpg" class="zoom" id="zoom63" data-lightbox="image-63">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>range</td>
+                                        <td>30 km</td>
+                                        <td class="item_last">19 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>40 kmh</td>
+                                        <td class="item_last">25 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>weight</td>
+                                        <td>7 kg</td>
+                                        <td class="item_last">15 lbs</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=toleg" class="username" style="color:#fff">toleg</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 8</a>
+
+                            </div>
+
+                            <a href="/eboard-63.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="97" class="item"
+                            style="background:#666 url('/static/uploads/500/u0pxk7cyqf4w63w.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/u0pxk7cyqf4w63w.jpg" class="zoom" id="zoom97"
+                                data-lightbox="image-97">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>92 kmh</td>
+                                        <td class="item_last">57 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>weight</td>
+                                        <td>10 kg</td>
+                                        <td class="item_last">22 lbs</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=moestooge" class="username" style="color:#fff">moestooge</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 8</a>
+
+                            </div>
+
+                            <a href="/eboard-97.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="2" class="item"
+                            style="background:#666 url('/static/uploads/500/q644n28f81gw9hw.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/q644n28f81gw9hw.jpg" class="zoom" id="zoom2"
+                                data-lightbox="image-2">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>range</td>
+                                        <td>30 km</td>
+                                        <td class="item_last">19 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>35 kmh</td>
+                                        <td class="item_last">22 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>weight</td>
+                                        <td>8 kg</td>
+                                        <td class="item_last">18 lbs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>price</td>
+                                        <td>500 €</td>
+                                        <td class="item_last">$ 585</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=tueboard" class="username" style="color:#fff">tueboard</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 7</a>
+
+                            </div>
+
+                            <a href="/eboard-2.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="12" class="item"
+                            style="background:#666 url('/static/uploads/500/12.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/12.jpg" class="zoom" id="zoom12" data-lightbox="image-12">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>range</td>
+                                        <td>8 km</td>
+                                        <td class="item_last">5 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>40 kmh</td>
+                                        <td class="item_last">25 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>weight</td>
+                                        <td>30 kg</td>
+                                        <td class="item_last">66 lbs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>price</td>
+                                        <td>4000 €</td>
+                                        <td class="item_last">$ 4683</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=duffman" class="username" style="color:#fff">duffman</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 7</a>
+
+                            </div>
+
+                            <a href="/eboard-12.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="13" class="item"
+                            style="background:#666 url('/static/uploads/500/krlzwpx8xs21ekt.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/krlzwpx8xs21ekt.jpg" class="zoom" id="zoom13"
+                                data-lightbox="image-13">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+                            <div class="info"
+                                style="position:absolute;margin:15px 0 0 15px;color:#fff;background: rgba(0, 0, 0, 0.4);padding:5px 11px;text-shadow: 1px 1px #000;">
+
+                                <table>
+                                    <tr>
+                                        <td>range</td>
+                                        <td>20 km</td>
+                                        <td class="item_last">12 mi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>speed</td>
+                                        <td>35 kmh</td>
+                                        <td class="item_last">22 mph</td>
+                                    </tr>
+                                    <tr>
+                                        <td>weight</td>
+                                        <td>12 kg</td>
+                                        <td class="item_last">26 lbs</td>
+                                    </tr>
+                                    <tr>
+                                        <td>price</td>
+                                        <td>555 €</td>
+                                        <td class="item_last">$ 650</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=okami" class="username" style="color:#fff">okami</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 6</a>
+
+                            </div>
+
+                            <a href="/eboard-13.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+            <div class="grid-item">
+                <div style="padding:0 20px 30px 0">
+
+                    <div style="height:200px">
+
+
+
+
+                        <div data-id="15" class="item"
+                            style="background:#666 url('/static/uploads/500/15.jpg?v') no-repeat center center;background-size:cover;">
+
+
+                            <a style="margin:10px;margin-top:0;position:absolute;color:#fff;"
+                                href="/static/uploads/full/15.jpg" class="zoom" id="zoom15" data-lightbox="image-15">
+                                <i class="fa fa-search"></i>
+                            </a>
+
+
+
+
+                            <div class="pull-right author"
+                                style="position:relative;margin-bottom:-40px;padding:10px;color:#fff"><a
+                                    href="/home/?username=longhairedboy" class="username"
+                                    style="color:#fff">longhairedboy</a>
+
+                                &nbsp; <a href="#" class="btn_likes"><i class="fa fa-thumbs-o-up"></i> 6</a>
+
+                            </div>
+
+                            <a href="/eboard-15.html"><img src="/static/img/Transparent.gif"
+                                    style="height:200px;width:100%;max-width:100%"></a><br>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <br style="clear:both">
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</body>
+
+</html>
